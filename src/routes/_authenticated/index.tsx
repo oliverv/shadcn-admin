@@ -99,6 +99,24 @@ const SERVICE_METADATA = {
     category: 'monitoring' as const,
     version: undefined as string | undefined,
   },
+  litellm: {
+    icon: Activity,
+    description: 'LiteLLM proxy server',
+    category: 'admin' as const,
+    version: undefined as string | undefined,
+  },
+  'caddy-py': {
+    icon: Network,
+    description: 'Caddy Python API server',
+    category: 'admin' as const,
+    version: undefined as string | undefined,
+  },
+  'api-gateway-admin': {
+    icon: Network,
+    description: 'API Gateway admin interface',
+    category: 'admin' as const,
+    version: undefined as string | undefined,
+  },
 }
 
 function DashboardPage() {

@@ -176,4 +176,25 @@ export const SERVICES: ServiceHealthCheck[] = [
     url: 'https://beszel-openmemory.collabmind.dev',
     port: 8090,
   },
+  {
+    id: 'litellm',
+    name: 'LiteLLM Proxy',
+    url: 'https://litellm-openmemory.collabmind.dev',
+    port: 9080,
+    healthEndpoint: 'https://litellm-openmemory.collabmind.dev/openapi.json',
+  },
+  {
+    id: 'caddy-py',
+    name: 'Caddy Python',
+    url: 'https://caddy-py-openmemory.collabmind.dev',
+    port: 8008,
+    healthEndpoint: 'https://caddy-py-openmemory.collabmind.dev/openapi.json',
+  },
+  {
+    id: 'api-gateway-admin',
+    name: 'API Gateway Admin',
+    url: 'https://gateway-openmemory.collabmind.dev',
+    port: 8888,
+    healthEndpoint: 'https://gateway-openmemory.collabmind.dev/openapi.json',
+  },
 ]
