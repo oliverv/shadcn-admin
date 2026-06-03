@@ -57,6 +57,12 @@ const SERVICE_METADATA = {
     category: 'core' as const,
     version: 'v4.38' as string | undefined,
   },
+  'authelia-admin': {
+    icon: Shield,
+    description: 'Authelia admin API',
+    category: 'admin' as const,
+    version: undefined as string | undefined,
+  },
   cloudbeaver: {
     icon: Database,
     description: 'Universal database manager',

@@ -138,6 +138,13 @@ export const SERVICES: ServiceHealthCheck[] = [
     healthEndpoint: 'https://auth.collabmind.dev/api/health',
   },
   {
+    id: 'authelia-admin',
+    name: 'Authelia Admin',
+    url: 'https://auth-admin-openmemory.collabmind.dev',
+    port: 8889,
+    healthEndpoint: 'https://auth-admin-openmemory.collabmind.dev/openapi.json',
+  },
+  {
     id: 'cloudbeaver',
     name: 'CloudBeaver',
     url: 'http://localhost:8978',
