@@ -1,56 +1,36 @@
 import {
-  Construction,
   LayoutDashboard,
-  Monitor,
-  Bug,
-  ListTodo,
-  FileX,
-  HelpCircle,
-  Lock,
-  Bell,
-  Package,
-  Palette,
-  ServerOff,
+  Server,
+  Activity,
+  Database,
+  Network,
+  Container,
+  FileCode,
   Settings,
-  Wrench,
-  UserCog,
-  UserX,
-  Users,
-  MessagesSquare,
-  ShieldCheck,
-  AudioWaveform,
+  Shield,
+  BarChart3,
+  Layers,
+  Boxes,
   Command,
-  GalleryVerticalEnd,
 } from 'lucide-react'
-import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
+    name: 'Admin',
+    email: 'admin@openmemory.local',
     avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: 'Shadcn Admin',
+      name: 'OpenMemory',
       logo: Command,
-      plan: 'Vite + ShadcnUI',
-    },
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
+      plan: 'Infrastructure',
     },
   ],
   navGroups: [
     {
-      title: 'General',
+      title: 'Overview',
       items: [
         {
           title: 'Dashboard',
@@ -58,146 +38,107 @@ export const sidebarData: SidebarData = {
           icon: LayoutDashboard,
         },
         {
-          title: 'Tasks',
-          url: '/tasks',
-          icon: ListTodo,
+          title: 'Services',
+          url: '/services',
+          icon: Server,
         },
         {
-          title: 'Apps',
-          url: '/apps',
-          icon: Package,
+          title: 'Metrics',
+          url: '/metrics',
+          icon: Activity,
+        },
+      ],
+    },
+    {
+      title: 'Infrastructure',
+      items: [
+        {
+          title: 'Containers',
+          url: '/containers',
+          icon: Container,
         },
         {
-          title: 'Chats',
-          url: '/chats',
-          badge: '3',
-          icon: MessagesSquare,
+          title: 'Traefik',
+          url: '/traefik',
+          icon: Network,
         },
         {
-          title: 'Users',
-          url: '/users',
-          icon: Users,
+          title: 'Vector Store',
+          url: '/vector-store',
+          icon: Layers,
         },
+      ],
+    },
+    {
+      title: 'Admin Tools',
+      items: [
         {
-          title: 'Secured by Clerk',
-          icon: ClerkLogo,
+          title: 'Database Admin',
+          icon: Database,
           items: [
             {
-              title: 'Sign In',
-              url: '/clerk/sign-in',
+              title: 'CloudBeaver',
+              url: '/admin/cloudbeaver',
             },
             {
-              title: 'Sign Up',
-              url: '/clerk/sign-up',
+              title: 'Bytebase',
+              url: '/admin/bytebase',
             },
             {
-              title: 'User Management',
-              url: '/clerk/user-management',
+              title: 'NocoDB',
+              url: '/admin/nocodb',
+            },
+          ],
+        },
+        {
+          title: 'Content & CMS',
+          icon: FileCode,
+          items: [
+            {
+              title: 'Directus',
+              url: '/admin/directus',
             },
           ],
         },
       ],
     },
     {
-      title: 'Pages',
+      title: 'Monitoring',
       items: [
         {
-          title: 'Auth',
-          icon: ShieldCheck,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/sign-in',
-            },
-            {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
-            },
-            {
-              title: 'Sign Up',
-              url: '/sign-up',
-            },
-            {
-              title: 'Forgot Password',
-              url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
-            },
-          ],
+          title: 'Grafana',
+          url: '/monitoring/grafana',
+          icon: BarChart3,
         },
         {
-          title: 'Errors',
-          icon: Bug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: Lock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/errors/forbidden',
-              icon: UserX,
-            },
-            {
-              title: 'Not Found',
-              url: '/errors/not-found',
-              icon: FileX,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: ServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: Construction,
-            },
-          ],
+          title: 'Beszel',
+          url: '/monitoring/beszel',
+          icon: Activity,
+        },
+        {
+          title: 'Logs',
+          url: '/logs',
+          icon: FileCode,
         },
       ],
     },
     {
-      title: 'Other',
+      title: 'System',
       items: [
+        {
+          title: 'LiteLLM Stack',
+          url: '/litellm',
+          icon: Boxes,
+        },
+        {
+          title: 'Authentication',
+          url: '/auth',
+          icon: Shield,
+        },
         {
           title: 'Settings',
+          url: '/settings',
           icon: Settings,
-          items: [
-            {
-              title: 'Profile',
-              url: '/settings',
-              icon: UserCog,
-            },
-            {
-              title: 'Account',
-              url: '/settings/account',
-              icon: Wrench,
-            },
-            {
-              title: 'Appearance',
-              url: '/settings/appearance',
-              icon: Palette,
-            },
-            {
-              title: 'Notifications',
-              url: '/settings/notifications',
-              icon: Bell,
-            },
-            {
-              title: 'Display',
-              url: '/settings/display',
-              icon: Monitor,
-            },
-          ],
-        },
-        {
-          title: 'Help Center',
-          url: '/help-center',
-          icon: HelpCircle,
         },
       ],
     },
