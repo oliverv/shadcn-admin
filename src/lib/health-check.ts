@@ -87,7 +87,12 @@ export async function checkMultipleServicesHealth(
 /**
  * Service definitions with health check endpoints
  */
+/**
+ * Services currently RUNNING and accessible
+ * Only includes services that are actually deployed
+ */
 export const SERVICES: ServiceHealthCheck[] = [
+  // Core Infrastructure (all running)
   {
     id: 'api-gateway',
     name: 'API Gateway',
@@ -128,7 +133,7 @@ export const SERVICES: ServiceHealthCheck[] = [
     name: 'Qdrant',
     url: 'https://qdrant-openmemory.collabmind.dev',
     port: 6333,
-    healthEndpoint: 'https://qdrant-openmemory.collabmind.dev/health',
+    healthEndpoint: 'https://qdrant-openmemory.collabmind.dev',
   },
   {
     id: 'authelia',
@@ -137,6 +142,8 @@ export const SERVICES: ServiceHealthCheck[] = [
     port: 9091,
     healthEndpoint: 'https://auth.collabmind.dev/api/health',
   },
+  
+  // Admin Services (running)
   {
     id: 'authelia-admin',
     name: 'Authelia Admin',
@@ -149,13 +156,6 @@ export const SERVICES: ServiceHealthCheck[] = [
     name: 'CloudBeaver',
     url: 'http://localhost:8978',
     port: 8978,
-  },
-  {
-    id: 'directus',
-    name: 'Directus',
-    url: 'http://localhost:8055',
-    port: 8055,
-    healthEndpoint: 'http://localhost:8055/server/health',
   },
   {
     id: 'bytebase',
@@ -171,30 +171,22 @@ export const SERVICES: ServiceHealthCheck[] = [
     healthEndpoint: 'http://localhost:8083/api/v1/health',
   },
   {
-    id: 'beszel',
-    name: 'Beszel',
-    url: 'https://beszel-openmemory.collabmind.dev',
-    port: 8090,
-  },
-  {
-    id: 'litellm',
-    name: 'LiteLLM Proxy',
-    url: 'https://litellm-openmemory.collabmind.dev',
-    port: 9080,
-    healthEndpoint: 'https://litellm-openmemory.collabmind.dev/openapi.json',
-  },
-  {
     id: 'caddy-py',
     name: 'Caddy Python',
     url: 'https://caddy-py-openmemory.collabmind.dev',
     port: 8008,
     healthEndpoint: 'https://caddy-py-openmemory.collabmind.dev/openapi.json',
   },
+  
+  // Monitoring
   {
-    id: 'api-gateway-admin',
-    name: 'API Gateway Admin',
-    url: 'https://gateway-openmemory.collabmind.dev',
-    port: 8888,
-    healthEndpoint: 'https://gateway-openmemory.collabmind.dev/openapi.json',
+    id: 'beszel',
+    name: 'Beszel',
+    url: 'https://beszel-openmemory.collabmind.dev',
+    port: 8090,
   },
 ]
+
+// Services NOT included (not running or not accessible):
+// - directus: service exists but not running (no --profile admin)
+// - litellm: no service defined in docker-compose.yml

@@ -69,12 +69,6 @@ const SERVICE_METADATA = {
     category: 'admin' as const,
     version: '26.1.0' as string | undefined,
   },
-  directus: {
-    icon: Server,
-    description: 'Headless CMS',
-    category: 'admin' as const,
-    version: '11.17' as string | undefined,
-  },
   bytebase: {
     icon: Database,
     description: 'Database migration tool',
@@ -87,6 +81,12 @@ const SERVICE_METADATA = {
     category: 'admin' as const,
     version: '2026.06.0' as string | undefined,
   },
+  'caddy-py': {
+    icon: Network,
+    description: 'Caddy Python API server',
+    category: 'admin' as const,
+    version: undefined as string | undefined,
+  },
   grafana: {
     icon: BarChart3,
     description: 'Metrics visualization',
@@ -97,24 +97,6 @@ const SERVICE_METADATA = {
     icon: Server,
     description: 'Server monitoring',
     category: 'monitoring' as const,
-    version: undefined as string | undefined,
-  },
-  litellm: {
-    icon: Activity,
-    description: 'LiteLLM proxy server',
-    category: 'admin' as const,
-    version: undefined as string | undefined,
-  },
-  'caddy-py': {
-    icon: Network,
-    description: 'Caddy Python API server',
-    category: 'admin' as const,
-    version: undefined as string | undefined,
-  },
-  'api-gateway-admin': {
-    icon: Network,
-    description: 'API Gateway admin interface',
-    category: 'admin' as const,
     version: undefined as string | undefined,
   },
 }
