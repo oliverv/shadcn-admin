@@ -43,26 +43,26 @@ export function parseTraefikConfig(): TraefikConfig {
     { name: 'api-openmemory', rule: 'Host(`api-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['jwt-auth'], service: 'openmemory-svc' },
     { name: 'mcp-openmemory', rule: 'Host(`mcp-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['add-api-key'], service: 'openmemory-svc' },
     { name: 'api-py-openmemory', rule: 'Host(`api-py-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['add-api-key'], service: 'openmemory-py-svc' },
-    { name: 'mcp-py-openmemory', rule: 'Host(`mcp-py-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth', 'no-buffer'], service: 'openmemory-py-svc' },
-    { name: 'authelia-server', rule: 'Host(`auth.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme'], service: 'authelia-svc' },
-    { name: 'intra-beta', rule: 'Host(`intra-beta.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'intra-beta-svc' },
+    { name: 'mcp-py-openmemory', rule: 'Host(`mcp-py-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth', 'no-buffer'], service: 'openmemory-py-svc' },
+    { name: 'authentik-server', rule: 'Host(`auth.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme'], service: 'authentik-svc' },
+    { name: 'intra-beta', rule: 'Host(`intra-beta.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'intra-beta-svc' },
     { name: 'dashboard-openmemory', rule: 'Host(`openmemory.collabmind.dev`) || Host(`dash-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: [], service: 'dashboard-svc' },
-    { name: 'infrastructure-dashboard-openmemory', rule: 'Host(`intra-beta.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'infrastructure-dashboard-svc' },
+    { name: 'infrastructure-dashboard-openmemory', rule: 'Host(`intra-beta.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'infrastructure-dashboard-svc' },
     { name: 'qdrant-openmemory', rule: 'Host(`qdrant-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: [], service: 'qdrant-svc' },
-    { name: 'xai-mem-gateway', rule: 'Host(`xai-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'xai-gateway-svc' },
-    { name: 'api-gateway-openmemory', rule: 'Host(`gateway-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'api-gateway-svc' },
-    { name: 'authelia-admin-openmemory', rule: 'Host(`auth-admin-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'authelia-admin-svc' },
-    { name: 'grafana-openmemory', rule: 'Host(`grafana-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'grafana-svc' },
-    { name: 'prometheus-openmemory', rule: 'Host(`prometheus-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'prometheus-svc' },
-    { name: 'vm-openmemory', rule: 'Host(`vm-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'victoriametrics-svc' },
-    { name: 'beszel-openmemory', rule: 'Host(`beszel-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authelia-auth'], service: 'beszel-svc' },
+    { name: 'xai-mem-gateway', rule: 'Host(`xai-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'xai-gateway-svc' },
+    { name: 'api-gateway-openmemory', rule: 'Host(`gateway-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'api-gateway-svc' },
+    { name: 'authentik-admin-openmemory', rule: 'Host(`auth-admin-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'authentik-admin-svc' },
+    { name: 'grafana-openmemory', rule: 'Host(`grafana-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'grafana-svc' },
+    { name: 'prometheus-openmemory', rule: 'Host(`prometheus-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'prometheus-svc' },
+    { name: 'vm-openmemory', rule: 'Host(`vm-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'victoriametrics-svc' },
+    { name: 'beszel-openmemory', rule: 'Host(`beszel-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['set-https-scheme', 'authentik-auth'], service: 'beszel-svc' },
     { name: 'py-openmemory', rule: 'Host(`py-openmemory.collabmind.dev`)', entryPoints: ['web'], middlewares: ['add-api-key'], service: 'openmemory-py-svc' },
   ]
 
   const middlewares: TraefikMiddleware[] = [
     { name: 'no-buffer', type: 'buffering', config: { maxResponseBodyBytes: 0 } },
     { name: 'jwt-auth', type: 'forwardAuth', config: { address: 'http://jwt-validator:9000', authRequestHeaders: ['Authorization'] } },
-    { name: 'authelia-auth', type: 'forwardAuth', config: { address: 'http://authelia:9091/api/authz/forward-auth', trustForwardHeader: true } },
+    { name: 'authentik-auth', type: 'forwardAuth', config: { address: 'http://authentik:9091/api/authz/forward-auth', trustForwardHeader: true } },
     { name: 'set-https-scheme', type: 'headers', config: { customRequestHeaders: { 'X-Forwarded-Proto': 'https', 'X-Forwarded-Ssl': 'on' } } },
     { name: 'add-api-key', type: 'headers', config: { customRequestHeaders: { 'X-API-Key': '***' } } },
   ]
@@ -75,8 +75,8 @@ export function parseTraefikConfig(): TraefikConfig {
     { name: 'qdrant-svc', loadBalancer: { servers: [{ url: 'http://qdrant:6333' }] } },
     { name: 'xai-gateway-svc', loadBalancer: { servers: [{ url: 'http://xai-mem-gateway:8233' }] } },
     { name: 'api-gateway-svc', loadBalancer: { servers: [{ url: 'http://api-gateway:8888' }] } },
-    { name: 'authelia-admin-svc', loadBalancer: { servers: [{ url: 'http://authelia-admin:8889' }] } },
-    { name: 'authelia-svc', loadBalancer: { servers: [{ url: 'http://authelia:9091' }] } },
+    { name: 'authentik-admin-svc', loadBalancer: { servers: [{ url: 'http://authentik-admin:8889' }] } },
+    { name: 'authentik-svc', loadBalancer: { servers: [{ url: 'http://authentik:9091' }] } },
     { name: 'intra-beta-svc', loadBalancer: { servers: [{ url: 'http://host.docker.internal:3001' }] } },
     { name: 'grafana-svc', loadBalancer: { servers: [{ url: 'http://grafana:3000' }] } },
     { name: 'prometheus-svc', loadBalancer: { servers: [{ url: 'http://prometheus:9090' }] } },
@@ -121,7 +121,7 @@ export function getMiddlewareChain(router: TraefikRouter, middlewares: TraefikMi
  */
 export function getAuthType(router: TraefikRouter): 'JWT' | 'OAuth2' | 'API Key' | 'None' {
   if (router.middlewares.includes('jwt-auth')) return 'JWT'
-  if (router.middlewares.includes('authelia-auth')) return 'OAuth2'
+  if (router.middlewares.includes('authentik-auth')) return 'OAuth2'
   if (router.middlewares.includes('add-api-key')) return 'API Key'
   return 'None'
 }
