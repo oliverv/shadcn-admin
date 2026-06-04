@@ -3,19 +3,18 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-
 # Install pnpm
 RUN npm install -g pnpm
+
+# Copy all source code first
+COPY . .
 
 # Install dependencies (ignore build script warnings in Docker)
 RUN pnpm install --frozen-lockfile --ignore-scripts
 
-# Copy source code
-COPY . .
-
 # Build the application
+ARG VITE_AUTHENTIK_TOKEN
+ENV VITE_AUTHENTIK_TOKEN=$VITE_AUTHENTIK_TOKEN
 RUN pnpm run build
 
 # Production stage
