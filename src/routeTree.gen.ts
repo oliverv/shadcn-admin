@@ -53,6 +53,8 @@ import { Route as AuthenticatedMonitoringGrafanaRouteImport } from './routes/_au
 import { Route as AuthenticatedMonitoringAlertsRouteImport } from './routes/_authenticated/monitoring/alerts'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminOpenmetadataRouteImport } from './routes/_authenticated/admin/openmetadata'
+import { Route as AuthenticatedAdminMem0RouteImport } from './routes/_authenticated/admin/mem0'
 import { Route as AuthenticatedAdminDatabasesRouteImport } from './routes/_authenticated/admin/databases'
 import { Route as AuthenticatedAdminCloudflareRouteImport } from './routes/_authenticated/admin/cloudflare'
 
@@ -292,6 +294,17 @@ const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   path: '/admin/users',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAdminOpenmetadataRoute =
+  AuthenticatedAdminOpenmetadataRouteImport.update({
+    id: '/admin/openmetadata',
+    path: '/admin/openmetadata',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminMem0Route = AuthenticatedAdminMem0RouteImport.update({
+  id: '/admin/mem0',
+  path: '/admin/mem0',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedAdminDatabasesRoute =
   AuthenticatedAdminDatabasesRouteImport.update({
     id: '/admin/databases',
@@ -322,6 +335,8 @@ export interface FileRoutesByFullPath {
   '/docs': typeof AuthenticatedDocsRoute
   '/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
   '/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/admin/mem0': typeof AuthenticatedAdminMem0Route
+  '/admin/openmetadata': typeof AuthenticatedAdminOpenmetadataRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
@@ -366,6 +381,8 @@ export interface FileRoutesByTo {
   '/': typeof AuthenticatedIndexRoute
   '/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
   '/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/admin/mem0': typeof AuthenticatedAdminMem0Route
+  '/admin/openmetadata': typeof AuthenticatedAdminOpenmetadataRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
@@ -413,6 +430,8 @@ export interface FileRoutesById {
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
   '/_authenticated/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/_authenticated/admin/mem0': typeof AuthenticatedAdminMem0Route
+  '/_authenticated/admin/openmetadata': typeof AuthenticatedAdminOpenmetadataRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/_authenticated/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
@@ -459,6 +478,8 @@ export interface FileRouteTypes {
     | '/docs'
     | '/admin/cloudflare'
     | '/admin/databases'
+    | '/admin/mem0'
+    | '/admin/openmetadata'
     | '/admin/users'
     | '/errors/$error'
     | '/monitoring/alerts'
@@ -503,6 +524,8 @@ export interface FileRouteTypes {
     | '/'
     | '/admin/cloudflare'
     | '/admin/databases'
+    | '/admin/mem0'
+    | '/admin/openmetadata'
     | '/admin/users'
     | '/errors/$error'
     | '/monitoring/alerts'
@@ -549,6 +572,8 @@ export interface FileRouteTypes {
     | '/_authenticated/'
     | '/_authenticated/admin/cloudflare'
     | '/_authenticated/admin/databases'
+    | '/_authenticated/admin/mem0'
+    | '/_authenticated/admin/openmetadata'
     | '/_authenticated/admin/users'
     | '/_authenticated/errors/$error'
     | '/_authenticated/monitoring/alerts'
@@ -902,6 +927,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/openmetadata': {
+      id: '/_authenticated/admin/openmetadata'
+      path: '/admin/openmetadata'
+      fullPath: '/admin/openmetadata'
+      preLoaderRoute: typeof AuthenticatedAdminOpenmetadataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/mem0': {
+      id: '/_authenticated/admin/mem0'
+      path: '/admin/mem0'
+      fullPath: '/admin/mem0'
+      preLoaderRoute: typeof AuthenticatedAdminMem0RouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/admin/databases': {
       id: '/_authenticated/admin/databases'
       path: '/admin/databases'
@@ -948,6 +987,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAdminCloudflareRoute: typeof AuthenticatedAdminCloudflareRoute
   AuthenticatedAdminDatabasesRoute: typeof AuthenticatedAdminDatabasesRoute
+  AuthenticatedAdminMem0Route: typeof AuthenticatedAdminMem0Route
+  AuthenticatedAdminOpenmetadataRoute: typeof AuthenticatedAdminOpenmetadataRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
   AuthenticatedMonitoringAlertsRoute: typeof AuthenticatedMonitoringAlertsRoute
@@ -975,6 +1016,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAdminCloudflareRoute: AuthenticatedAdminCloudflareRoute,
   AuthenticatedAdminDatabasesRoute: AuthenticatedAdminDatabasesRoute,
+  AuthenticatedAdminMem0Route: AuthenticatedAdminMem0Route,
+  AuthenticatedAdminOpenmetadataRoute: AuthenticatedAdminOpenmetadataRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
   AuthenticatedMonitoringAlertsRoute: AuthenticatedMonitoringAlertsRoute,

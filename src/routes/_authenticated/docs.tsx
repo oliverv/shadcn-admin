@@ -192,34 +192,60 @@ function DocsPage() {
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="mb-2 text-sm font-medium">XAI Services</h4>
-                  <div className="space-y-2">
-                    <ServiceDoc
-                      name="XAI Reasoning Service"
-                      url="https://reasoning-openmemory.collabmind.dev"
-                      description="Grok 4.20 reasoning with memory integration, web/X search, TTS, and image generation"
-                    />
-                    <ServiceDoc
-                      name="Ara Voice Agent"
-                      url="https://ara-openmemory.collabmind.dev"
-                      description="WebSocket voice agent with Grok Voice API and MCP memory connector"
-                    />
-                    <ServiceDoc
-                      name="Collections Service"
-                      url="https://collections-openmemory.collabmind.dev"
-                      description="File collections with vector search (PDF, DOCX, XLSX, TXT)"
-                    />
-                    <ServiceDoc
-                      name="Reasoning Chat (standalone)"
-                      url="https://reasoning.collabmind.dev"
-                      description="Independent Next.js app: Grok chat with hybrid RAG, animated stages, and xAI realtime voice"
-                    />
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium">XAI Services</h4>
+                    <div className="space-y-2">
+                      <ServiceDoc
+                        name="XAI Reasoning Service"
+                        url="https://reasoning-openmemory.collabmind.dev"
+                        description="Grok 4.20 reasoning with memory integration, web/X search, TTS, and image generation"
+                      />
+                      <ServiceDoc
+                        name="Ara Voice Agent"
+                        url="https://ara-openmemory.collabmind.dev"
+                        description="WebSocket voice agent with Grok Voice API and MCP memory connector"
+                      />
+                      <ServiceDoc
+                        name="Collections Service"
+                        url="https://collections-openmemory.collabmind.dev"
+                        description="File collections with vector search (PDF, DOCX, XLSX, TXT)"
+                      />
+                      <ServiceDoc
+                        name="Reasoning Chat (standalone)"
+                        url="https://reasoning.collabmind.dev"
+                        description="Independent Next.js app: Grok chat with hybrid RAG, animated stages, and xAI realtime voice"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div>
-                  <h4 className="mb-2 text-sm font-medium">Monitoring</h4>
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium">Data & Memory</h4>
+                    <div className="space-y-2">
+                      <ServiceDoc
+                        name="OpenMetadata"
+                        url="https://openmetadata.collabmind.dev"
+                        description="Data discovery, cataloging, and governance platform with Authentik SSO"
+                      />
+                      <ServiceDoc
+                        name="Mem0"
+                        url="https://mem0.collabmind.dev"
+                        description="AI memory layer with persistent knowledge storage and vector search"
+                      />
+                      <ServiceDoc
+                        name="Mem0 API"
+                        url="https://mem0-api.collabmind.dev"
+                        description="Mem0 REST API endpoint"
+                      />
+                      <ServiceDoc
+                        name="Mem0 MCP"
+                        url="https://mem0-mcp.collabmind.dev"
+                        description="Mem0 MCP connector for AI agent integration"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium">Monitoring</h4>
                   <div className="space-y-2">
                     <ServiceDoc
                       name="VictoriaMetrics"

@@ -177,6 +177,20 @@ export const SERVICES: ServiceHealthCheck[] = [
     port: 8008,
     healthEndpoint: 'https://caddy-py-openmemory.collabmind.dev/openapi.json',
   },
+  {
+    id: 'openmetadata',
+    name: 'OpenMetadata',
+    url: 'https://openmetadata.collabmind.dev',
+    port: 8585,
+    healthEndpoint: 'https://openmetadata.collabmind.dev/health',
+  },
+  {
+    id: 'mem0',
+    name: 'Mem0',
+    url: 'https://mem0.collabmind.dev',
+    port: 8881,
+    healthEndpoint: 'https://mem0-api.collabmind.dev/health',
+  },
   
   // Monitoring
   {
