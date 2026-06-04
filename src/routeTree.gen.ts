@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthenticatedDocsRouteImport } from './routes/_authenticated/docs'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
 import { Route as errors404RouteImport } from './routes/(errors)/404'
@@ -25,22 +27,34 @@ import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-p
 import { Route as ClerkAuthenticatedRouteRouteImport } from './routes/clerk/_authenticated/route'
 import { Route as ClerkauthRouteRouteImport } from './routes/clerk/(auth)/route'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as AuthenticatedVectorStoreIndexRouteImport } from './routes/_authenticated/vector-store/index'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedServicesIndexRouteImport } from './routes/_authenticated/services/index'
 import { Route as AuthenticatedMetricsIndexRouteImport } from './routes/_authenticated/metrics/index'
 import { Route as AuthenticatedHelpCenterIndexRouteImport } from './routes/_authenticated/help-center/index'
+import { Route as AuthenticatedContainersIndexRouteImport } from './routes/_authenticated/containers/index'
 import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
 import { Route as AuthenticatedAppsIndexRouteImport } from './routes/_authenticated/apps/index'
 import { Route as ClerkAuthenticatedUserManagementRouteImport } from './routes/clerk/_authenticated/user-management'
 import { Route as ClerkauthSignUpRouteImport } from './routes/clerk/(auth)/sign-up'
 import { Route as ClerkauthSignInRouteImport } from './routes/clerk/(auth)/sign-in'
+import { Route as AuthenticatedVoiceAraRouteImport } from './routes/_authenticated/voice/ara'
+import { Route as AuthenticatedTraefikRoutesRouteImport } from './routes/_authenticated/traefik/routes'
+import { Route as AuthenticatedTraefikDashboardRouteImport } from './routes/_authenticated/traefik/dashboard'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
+import { Route as AuthenticatedMonitoringSystemsRouteImport } from './routes/_authenticated/monitoring/systems'
+import { Route as AuthenticatedMonitoringLogsRouteImport } from './routes/_authenticated/monitoring/logs'
+import { Route as AuthenticatedMonitoringGrafanaRouteImport } from './routes/_authenticated/monitoring/grafana'
+import { Route as AuthenticatedMonitoringAlertsRouteImport } from './routes/_authenticated/monitoring/alerts'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminDatabasesRouteImport } from './routes/_authenticated/admin/databases'
+import { Route as AuthenticatedAdminCloudflareRouteImport } from './routes/_authenticated/admin/cloudflare'
 
 const ClerkRouteRoute = ClerkRouteRouteImport.update({
   id: '/clerk',
@@ -54,6 +68,16 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDocsRoute = AuthenticatedDocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const errors503Route = errors503RouteImport.update({
@@ -120,6 +144,12 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedVectorStoreIndexRoute =
+  AuthenticatedVectorStoreIndexRouteImport.update({
+    id: '/vector-store/',
+    path: '/vector-store/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
@@ -134,7 +164,7 @@ const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => AuthenticatedSettingsRoute,
   } as any)
 const AuthenticatedServicesIndexRoute =
   AuthenticatedServicesIndexRouteImport.update({
@@ -152,6 +182,12 @@ const AuthenticatedHelpCenterIndexRoute =
   AuthenticatedHelpCenterIndexRouteImport.update({
     id: '/help-center/',
     path: '/help-center/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedContainersIndexRoute =
+  AuthenticatedContainersIndexRouteImport.update({
+    id: '/containers/',
+    path: '/containers/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
@@ -180,29 +216,70 @@ const ClerkauthSignInRoute = ClerkauthSignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => ClerkauthRouteRoute,
 } as any)
+const AuthenticatedVoiceAraRoute = AuthenticatedVoiceAraRouteImport.update({
+  id: '/voice/ara',
+  path: '/voice/ara',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTraefikRoutesRoute =
+  AuthenticatedTraefikRoutesRouteImport.update({
+    id: '/traefik/routes',
+    path: '/traefik/routes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTraefikDashboardRoute =
+  AuthenticatedTraefikDashboardRouteImport.update({
+    id: '/traefik/dashboard',
+    path: '/traefik/dashboard',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSettingsNotificationsRoute =
   AuthenticatedSettingsNotificationsRouteImport.update({
     id: '/notifications',
     path: '/notifications',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => AuthenticatedSettingsRoute,
   } as any)
 const AuthenticatedSettingsDisplayRoute =
   AuthenticatedSettingsDisplayRouteImport.update({
     id: '/display',
     path: '/display',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => AuthenticatedSettingsRoute,
   } as any)
 const AuthenticatedSettingsAppearanceRoute =
   AuthenticatedSettingsAppearanceRouteImport.update({
     id: '/appearance',
     path: '/appearance',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => AuthenticatedSettingsRoute,
   } as any)
 const AuthenticatedSettingsAccountRoute =
   AuthenticatedSettingsAccountRouteImport.update({
     id: '/account',
     path: '/account',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => AuthenticatedSettingsRoute,
+  } as any)
+const AuthenticatedMonitoringSystemsRoute =
+  AuthenticatedMonitoringSystemsRouteImport.update({
+    id: '/monitoring/systems',
+    path: '/monitoring/systems',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMonitoringLogsRoute =
+  AuthenticatedMonitoringLogsRouteImport.update({
+    id: '/monitoring/logs',
+    path: '/monitoring/logs',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMonitoringGrafanaRoute =
+  AuthenticatedMonitoringGrafanaRouteImport.update({
+    id: '/monitoring/grafana',
+    path: '/monitoring/grafana',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMonitoringAlertsRoute =
+  AuthenticatedMonitoringAlertsRouteImport.update({
+    id: '/monitoring/alerts',
+    path: '/monitoring/alerts',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedErrorsErrorRoute =
   AuthenticatedErrorsErrorRouteImport.update({
@@ -210,11 +287,28 @@ const AuthenticatedErrorsErrorRoute =
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminDatabasesRoute =
+  AuthenticatedAdminDatabasesRouteImport.update({
+    id: '/admin/databases',
+    path: '/admin/databases',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminCloudflareRoute =
+  AuthenticatedAdminCloudflareRouteImport.update({
+    id: '/admin/cloudflare',
+    path: '/admin/cloudflare',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
-  '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
-  '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/clerk': typeof ClerkauthRouteRouteWithChildren
+  '/settings': typeof AuthenticatedSettingsRouteWithChildren
   '/forgot-password': typeof authForgotPasswordRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
@@ -225,25 +319,39 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/docs': typeof AuthenticatedDocsRoute
+  '/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
+  '/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
+  '/monitoring/grafana': typeof AuthenticatedMonitoringGrafanaRoute
+  '/monitoring/logs': typeof AuthenticatedMonitoringLogsRoute
+  '/monitoring/systems': typeof AuthenticatedMonitoringSystemsRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/traefik/dashboard': typeof AuthenticatedTraefikDashboardRoute
+  '/traefik/routes': typeof AuthenticatedTraefikRoutesRoute
+  '/voice/ara': typeof AuthenticatedVoiceAraRoute
   '/clerk/sign-in': typeof ClerkauthSignInRoute
   '/clerk/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps/': typeof AuthenticatedAppsIndexRoute
   '/chats/': typeof AuthenticatedChatsIndexRoute
+  '/containers/': typeof AuthenticatedContainersIndexRoute
   '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/metrics/': typeof AuthenticatedMetricsIndexRoute
   '/services/': typeof AuthenticatedServicesIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/tasks/': typeof AuthenticatedTasksIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/vector-store/': typeof AuthenticatedVectorStoreIndexRoute
 }
 export interface FileRoutesByTo {
-  '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
+  '/clerk': typeof ClerkauthRouteRouteWithChildren
+  '/settings': typeof AuthenticatedSettingsIndexRoute
   '/forgot-password': typeof authForgotPasswordRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
@@ -254,29 +362,41 @@ export interface FileRoutesByTo {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/docs': typeof AuthenticatedDocsRoute
   '/': typeof AuthenticatedIndexRoute
+  '/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
+  '/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
+  '/monitoring/grafana': typeof AuthenticatedMonitoringGrafanaRoute
+  '/monitoring/logs': typeof AuthenticatedMonitoringLogsRoute
+  '/monitoring/systems': typeof AuthenticatedMonitoringSystemsRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/traefik/dashboard': typeof AuthenticatedTraefikDashboardRoute
+  '/traefik/routes': typeof AuthenticatedTraefikRoutesRoute
+  '/voice/ara': typeof AuthenticatedVoiceAraRoute
   '/clerk/sign-in': typeof ClerkauthSignInRoute
   '/clerk/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
+  '/containers': typeof AuthenticatedContainersIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
   '/metrics': typeof AuthenticatedMetricsIndexRoute
   '/services': typeof AuthenticatedServicesIndexRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/vector-store': typeof AuthenticatedVectorStoreIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/clerk': typeof ClerkRouteRouteWithChildren
-  '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/_authenticated/settings': typeof AuthenticatedSettingsRouteWithChildren
   '/clerk/(auth)': typeof ClerkauthRouteRouteWithChildren
   '/clerk/_authenticated': typeof ClerkAuthenticatedRouteRouteWithChildren
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
@@ -289,23 +409,36 @@ export interface FileRoutesById {
   '/(errors)/404': typeof errors404Route
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
+  '/_authenticated/docs': typeof AuthenticatedDocsRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/admin/cloudflare': typeof AuthenticatedAdminCloudflareRoute
+  '/_authenticated/admin/databases': typeof AuthenticatedAdminDatabasesRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/_authenticated/monitoring/alerts': typeof AuthenticatedMonitoringAlertsRoute
+  '/_authenticated/monitoring/grafana': typeof AuthenticatedMonitoringGrafanaRoute
+  '/_authenticated/monitoring/logs': typeof AuthenticatedMonitoringLogsRoute
+  '/_authenticated/monitoring/systems': typeof AuthenticatedMonitoringSystemsRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/_authenticated/traefik/dashboard': typeof AuthenticatedTraefikDashboardRoute
+  '/_authenticated/traefik/routes': typeof AuthenticatedTraefikRoutesRoute
+  '/_authenticated/voice/ara': typeof AuthenticatedVoiceAraRoute
   '/clerk/(auth)/sign-in': typeof ClerkauthSignInRoute
   '/clerk/(auth)/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/_authenticated/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
+  '/_authenticated/containers/': typeof AuthenticatedContainersIndexRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/_authenticated/metrics/': typeof AuthenticatedMetricsIndexRoute
   '/_authenticated/services/': typeof AuthenticatedServicesIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/vector-store/': typeof AuthenticatedVectorStoreIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -323,25 +456,39 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
+    | '/docs'
+    | '/admin/cloudflare'
+    | '/admin/databases'
+    | '/admin/users'
     | '/errors/$error'
+    | '/monitoring/alerts'
+    | '/monitoring/grafana'
+    | '/monitoring/logs'
+    | '/monitoring/systems'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/traefik/dashboard'
+    | '/traefik/routes'
+    | '/voice/ara'
     | '/clerk/sign-in'
     | '/clerk/sign-up'
     | '/clerk/user-management'
     | '/apps/'
     | '/chats/'
+    | '/containers/'
     | '/help-center/'
     | '/metrics/'
     | '/services/'
     | '/settings/'
     | '/tasks/'
     | '/users/'
+    | '/vector-store/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/clerk'
+    | '/settings'
     | '/forgot-password'
     | '/otp'
     | '/sign-in'
@@ -352,23 +499,35 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
+    | '/docs'
     | '/'
+    | '/admin/cloudflare'
+    | '/admin/databases'
+    | '/admin/users'
     | '/errors/$error'
+    | '/monitoring/alerts'
+    | '/monitoring/grafana'
+    | '/monitoring/logs'
+    | '/monitoring/systems'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/traefik/dashboard'
+    | '/traefik/routes'
+    | '/voice/ara'
     | '/clerk/sign-in'
     | '/clerk/sign-up'
     | '/clerk/user-management'
     | '/apps'
     | '/chats'
+    | '/containers'
     | '/help-center'
     | '/metrics'
     | '/services'
-    | '/settings'
     | '/tasks'
     | '/users'
+    | '/vector-store'
   id:
     | '__root__'
     | '/_authenticated'
@@ -386,23 +545,36 @@ export interface FileRouteTypes {
     | '/(errors)/404'
     | '/(errors)/500'
     | '/(errors)/503'
+    | '/_authenticated/docs'
     | '/_authenticated/'
+    | '/_authenticated/admin/cloudflare'
+    | '/_authenticated/admin/databases'
+    | '/_authenticated/admin/users'
     | '/_authenticated/errors/$error'
+    | '/_authenticated/monitoring/alerts'
+    | '/_authenticated/monitoring/grafana'
+    | '/_authenticated/monitoring/logs'
+    | '/_authenticated/monitoring/systems'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
+    | '/_authenticated/traefik/dashboard'
+    | '/_authenticated/traefik/routes'
+    | '/_authenticated/voice/ara'
     | '/clerk/(auth)/sign-in'
     | '/clerk/(auth)/sign-up'
     | '/clerk/_authenticated/user-management'
     | '/_authenticated/apps/'
     | '/_authenticated/chats/'
+    | '/_authenticated/containers/'
     | '/_authenticated/help-center/'
     | '/_authenticated/metrics/'
     | '/_authenticated/services/'
     | '/_authenticated/settings/'
     | '/_authenticated/tasks/'
     | '/_authenticated/users/'
+    | '/_authenticated/vector-store/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -441,6 +613,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/docs': {
+      id: '/_authenticated/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof AuthenticatedDocsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/(errors)/503': {
@@ -534,6 +720,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/vector-store/': {
+      id: '/_authenticated/vector-store/'
+      path: '/vector-store'
+      fullPath: '/vector-store/'
+      preLoaderRoute: typeof AuthenticatedVectorStoreIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/users/': {
       id: '/_authenticated/users/'
       path: '/users'
@@ -553,7 +746,7 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/settings/'
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRoute
     }
     '/_authenticated/services/': {
       id: '/_authenticated/services/'
@@ -574,6 +767,13 @@ declare module '@tanstack/react-router' {
       path: '/help-center'
       fullPath: '/help-center/'
       preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/containers/': {
+      id: '/_authenticated/containers/'
+      path: '/containers'
+      fullPath: '/containers/'
+      preLoaderRoute: typeof AuthenticatedContainersIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/chats/': {
@@ -611,33 +811,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClerkauthSignInRouteImport
       parentRoute: typeof ClerkauthRouteRoute
     }
+    '/_authenticated/voice/ara': {
+      id: '/_authenticated/voice/ara'
+      path: '/voice/ara'
+      fullPath: '/voice/ara'
+      preLoaderRoute: typeof AuthenticatedVoiceAraRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/traefik/routes': {
+      id: '/_authenticated/traefik/routes'
+      path: '/traefik/routes'
+      fullPath: '/traefik/routes'
+      preLoaderRoute: typeof AuthenticatedTraefikRoutesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/traefik/dashboard': {
+      id: '/_authenticated/traefik/dashboard'
+      path: '/traefik/dashboard'
+      fullPath: '/traefik/dashboard'
+      preLoaderRoute: typeof AuthenticatedTraefikDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/settings/notifications': {
       id: '/_authenticated/settings/notifications'
       path: '/notifications'
       fullPath: '/settings/notifications'
       preLoaderRoute: typeof AuthenticatedSettingsNotificationsRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRoute
     }
     '/_authenticated/settings/display': {
       id: '/_authenticated/settings/display'
       path: '/display'
       fullPath: '/settings/display'
       preLoaderRoute: typeof AuthenticatedSettingsDisplayRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRoute
     }
     '/_authenticated/settings/appearance': {
       id: '/_authenticated/settings/appearance'
       path: '/appearance'
       fullPath: '/settings/appearance'
       preLoaderRoute: typeof AuthenticatedSettingsAppearanceRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRoute
     }
     '/_authenticated/settings/account': {
       id: '/_authenticated/settings/account'
       path: '/account'
       fullPath: '/settings/account'
       preLoaderRoute: typeof AuthenticatedSettingsAccountRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRoute
+    }
+    '/_authenticated/monitoring/systems': {
+      id: '/_authenticated/monitoring/systems'
+      path: '/monitoring/systems'
+      fullPath: '/monitoring/systems'
+      preLoaderRoute: typeof AuthenticatedMonitoringSystemsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/monitoring/logs': {
+      id: '/_authenticated/monitoring/logs'
+      path: '/monitoring/logs'
+      fullPath: '/monitoring/logs'
+      preLoaderRoute: typeof AuthenticatedMonitoringLogsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/monitoring/grafana': {
+      id: '/_authenticated/monitoring/grafana'
+      path: '/monitoring/grafana'
+      fullPath: '/monitoring/grafana'
+      preLoaderRoute: typeof AuthenticatedMonitoringGrafanaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/monitoring/alerts': {
+      id: '/_authenticated/monitoring/alerts'
+      path: '/monitoring/alerts'
+      fullPath: '/monitoring/alerts'
+      preLoaderRoute: typeof AuthenticatedMonitoringAlertsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/errors/$error': {
       id: '/_authenticated/errors/$error'
@@ -646,10 +895,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/databases': {
+      id: '/_authenticated/admin/databases'
+      path: '/admin/databases'
+      fullPath: '/admin/databases'
+      preLoaderRoute: typeof AuthenticatedAdminDatabasesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/cloudflare': {
+      id: '/_authenticated/admin/cloudflare'
+      path: '/admin/cloudflare'
+      fullPath: '/admin/cloudflare'
+      preLoaderRoute: typeof AuthenticatedAdminCloudflareRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
-interface AuthenticatedSettingsRouteRouteChildren {
+interface AuthenticatedSettingsRouteChildren {
   AuthenticatedSettingsAccountRoute: typeof AuthenticatedSettingsAccountRoute
   AuthenticatedSettingsAppearanceRoute: typeof AuthenticatedSettingsAppearanceRoute
   AuthenticatedSettingsDisplayRoute: typeof AuthenticatedSettingsDisplayRoute
@@ -657,45 +927,72 @@ interface AuthenticatedSettingsRouteRouteChildren {
   AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
 }
 
-const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteChildren =
-  {
-    AuthenticatedSettingsAccountRoute: AuthenticatedSettingsAccountRoute,
-    AuthenticatedSettingsAppearanceRoute: AuthenticatedSettingsAppearanceRoute,
-    AuthenticatedSettingsDisplayRoute: AuthenticatedSettingsDisplayRoute,
-    AuthenticatedSettingsNotificationsRoute:
-      AuthenticatedSettingsNotificationsRoute,
-    AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
-  }
+const AuthenticatedSettingsRouteChildren: AuthenticatedSettingsRouteChildren = {
+  AuthenticatedSettingsAccountRoute: AuthenticatedSettingsAccountRoute,
+  AuthenticatedSettingsAppearanceRoute: AuthenticatedSettingsAppearanceRoute,
+  AuthenticatedSettingsDisplayRoute: AuthenticatedSettingsDisplayRoute,
+  AuthenticatedSettingsNotificationsRoute:
+    AuthenticatedSettingsNotificationsRoute,
+  AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
+}
 
-const AuthenticatedSettingsRouteRouteWithChildren =
-  AuthenticatedSettingsRouteRoute._addFileChildren(
-    AuthenticatedSettingsRouteRouteChildren,
+const AuthenticatedSettingsRouteWithChildren =
+  AuthenticatedSettingsRoute._addFileChildren(
+    AuthenticatedSettingsRouteChildren,
   )
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
+  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRoute
+  AuthenticatedDocsRoute: typeof AuthenticatedDocsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedAdminCloudflareRoute: typeof AuthenticatedAdminCloudflareRoute
+  AuthenticatedAdminDatabasesRoute: typeof AuthenticatedAdminDatabasesRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
+  AuthenticatedMonitoringAlertsRoute: typeof AuthenticatedMonitoringAlertsRoute
+  AuthenticatedMonitoringGrafanaRoute: typeof AuthenticatedMonitoringGrafanaRoute
+  AuthenticatedMonitoringLogsRoute: typeof AuthenticatedMonitoringLogsRoute
+  AuthenticatedMonitoringSystemsRoute: typeof AuthenticatedMonitoringSystemsRoute
+  AuthenticatedTraefikDashboardRoute: typeof AuthenticatedTraefikDashboardRoute
+  AuthenticatedTraefikRoutesRoute: typeof AuthenticatedTraefikRoutesRoute
+  AuthenticatedVoiceAraRoute: typeof AuthenticatedVoiceAraRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
+  AuthenticatedContainersIndexRoute: typeof AuthenticatedContainersIndexRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
   AuthenticatedMetricsIndexRoute: typeof AuthenticatedMetricsIndexRoute
   AuthenticatedServicesIndexRoute: typeof AuthenticatedServicesIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedVectorStoreIndexRoute: typeof AuthenticatedVectorStoreIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
+  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRoute,
+  AuthenticatedDocsRoute: AuthenticatedDocsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedAdminCloudflareRoute: AuthenticatedAdminCloudflareRoute,
+  AuthenticatedAdminDatabasesRoute: AuthenticatedAdminDatabasesRoute,
+  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
+  AuthenticatedMonitoringAlertsRoute: AuthenticatedMonitoringAlertsRoute,
+  AuthenticatedMonitoringGrafanaRoute: AuthenticatedMonitoringGrafanaRoute,
+  AuthenticatedMonitoringLogsRoute: AuthenticatedMonitoringLogsRoute,
+  AuthenticatedMonitoringSystemsRoute: AuthenticatedMonitoringSystemsRoute,
+  AuthenticatedTraefikDashboardRoute: AuthenticatedTraefikDashboardRoute,
+  AuthenticatedTraefikRoutesRoute: AuthenticatedTraefikRoutesRoute,
+  AuthenticatedVoiceAraRoute: AuthenticatedVoiceAraRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
+  AuthenticatedContainersIndexRoute: AuthenticatedContainersIndexRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
   AuthenticatedMetricsIndexRoute: AuthenticatedMetricsIndexRoute,
   AuthenticatedServicesIndexRoute: AuthenticatedServicesIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedVectorStoreIndexRoute: AuthenticatedVectorStoreIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

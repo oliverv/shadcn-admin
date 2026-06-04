@@ -1,8 +1,13 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, Server, Activity, HardDrive, Cpu, Info } from 'lucide-react'
 
-export default function SystemsPage() {
+export const Route = createFileRoute('/_authenticated/monitoring/systems')({
+  component: SystemsPage,
+})
+
+function SystemsPage() {
   const beszelUrl = 'https://beszel-openmemory.collabmind.dev'
 
   return (

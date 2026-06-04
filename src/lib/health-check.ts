@@ -185,6 +185,22 @@ export const SERVICES: ServiceHealthCheck[] = [
     url: 'https://beszel-openmemory.collabmind.dev',
     port: 8090,
   },
+
+  // XAI Services
+  {
+    id: 'xai-reasoning',
+    name: 'XAI Reasoning',
+    url: 'https://reasoning-openmemory.collabmind.dev',
+    port: 3011,
+    healthEndpoint: 'https://reasoning-openmemory.collabmind.dev/health',
+  },
+  {
+    id: 'ara-voice-agent',
+    name: 'Ara Voice Agent',
+    url: 'https://ara-openmemory.collabmind.dev',
+    port: 3010,
+    healthEndpoint: 'https://ara-openmemory.collabmind.dev/health',
+  },
 ]
 
 // Services NOT included (not running or not accessible):

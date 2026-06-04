@@ -1,17 +1,21 @@
 import {
-  LayoutDashboard,
-  Server,
   Activity,
-  Database,
-  Network,
+  BarChart3,
+  BadgeCheck,
+  Bell,
+  Cloud,
+  Command,
   Container,
-  FileCode,
+  Database,
+  FileText,
+  LayoutDashboard,
+  Layers,
+  Mic,
+  Monitor,
+  Network,
+  Server,
   Settings,
   Shield,
-  BarChart3,
-  Layers,
-  Boxes,
-  Command,
 } from 'lucide-react'
 import { type SidebarData } from '../types'
 
@@ -30,10 +34,10 @@ export const sidebarData: SidebarData = {
   ],
   navGroups: [
     {
-      title: 'Overview',
+      title: 'Dashboard',
       items: [
         {
-          title: 'Dashboard',
+          title: 'Home',
           url: '/',
           icon: LayoutDashboard,
         },
@@ -59,8 +63,17 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Traefik',
-          url: '/traefik',
           icon: Network,
+          items: [
+            {
+              title: 'Routes',
+              url: '/traefik/routes',
+            },
+            {
+              title: 'Dashboard',
+              url: '/traefik/dashboard',
+            },
+          ],
         },
         {
           title: 'Vector Store',
@@ -73,32 +86,29 @@ export const sidebarData: SidebarData = {
       title: 'Admin Tools',
       items: [
         {
-          title: 'Database Admin',
-          icon: Database,
-          items: [
-            {
-              title: 'CloudBeaver',
-              url: '/admin/cloudbeaver',
-            },
-            {
-              title: 'Bytebase',
-              url: '/admin/bytebase',
-            },
-            {
-              title: 'NocoDB',
-              url: '/admin/nocodb',
-            },
-          ],
+          title: 'Users',
+          url: '/admin/users',
+          icon: Shield,
         },
         {
-          title: 'Content & CMS',
-          icon: FileCode,
-          items: [
-            {
-              title: 'Directus',
-              url: '/admin/directus',
-            },
-          ],
+          title: 'Databases',
+          url: '/admin/databases',
+          icon: Database,
+        },
+        {
+          title: 'Cloudflare',
+          url: '/admin/cloudflare',
+          icon: Cloud,
+        },
+      ],
+    },
+    {
+      title: 'AI & Voice',
+      items: [
+        {
+          title: 'Ara Voice Agent',
+          url: '/voice/ara',
+          icon: Mic,
         },
       ],
     },
@@ -106,19 +116,24 @@ export const sidebarData: SidebarData = {
       title: 'Monitoring',
       items: [
         {
-          title: 'Grafana',
-          url: '/monitoring/grafana',
-          icon: BarChart3,
+          title: 'Systems',
+          url: '/monitoring/systems',
+          icon: Monitor,
         },
         {
-          title: 'Beszel',
-          url: '/monitoring/beszel',
-          icon: Activity,
+          title: 'Alerts',
+          url: '/monitoring/alerts',
+          icon: Bell,
         },
         {
           title: 'Logs',
-          url: '/logs',
-          icon: FileCode,
+          url: '/monitoring/logs',
+          icon: FileText,
+        },
+        {
+          title: 'Grafana',
+          url: '/monitoring/grafana',
+          icon: BarChart3,
         },
       ],
     },
@@ -126,19 +141,14 @@ export const sidebarData: SidebarData = {
       title: 'System',
       items: [
         {
-          title: 'LiteLLM Stack',
-          url: '/litellm',
-          icon: Boxes,
-        },
-        {
-          title: 'Authentication',
-          url: '/auth',
-          icon: Shield,
-        },
-        {
           title: 'Settings',
           url: '/settings',
           icon: Settings,
+        },
+        {
+          title: 'Documentation',
+          url: '/docs',
+          icon: BadgeCheck,
         },
       ],
     },

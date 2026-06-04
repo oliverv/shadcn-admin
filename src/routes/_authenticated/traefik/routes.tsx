@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { useState, useMemo } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -14,7 +15,11 @@ import {
 import { Search, ExternalLink, Shield, Key, Globe, ArrowRight, Server, Layers } from 'lucide-react'
 import { parseTraefikConfig, getRouterHosts, getAuthType, isPublicRoute } from '@/lib/traefik'
 
-export default function TraefikRoutesPage() {
+export const Route = createFileRoute('/_authenticated/traefik/routes')({
+  component: TraefikRoutesPage,
+})
+
+function TraefikRoutesPage() {
   const [search, setSearch] = useState('')
   const config = useMemo(() => parseTraefikConfig(), [])
 
