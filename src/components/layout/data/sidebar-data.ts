@@ -3,7 +3,6 @@ import {
   BarChart3,
   BadgeCheck,
   Bell,
-  BookOpen,
   BrainCircuit,
   Cloud,
   Command,
